@@ -1,3 +1,3 @@
 # Photometry reduction
 
-Now I have uploaded a raw jupyter-notebook, later I will issue it in the form of a normal script.
+Now I have uploaded a  script with argparse. Script has a manual mode. I will write about it later...
