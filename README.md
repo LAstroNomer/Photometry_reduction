@@ -16,7 +16,7 @@ pip3 install photutils astropy pathlib numpy scipy matplotlib
 
 1. Программа запускается через основной скрипт main.py
 
- `python3 main.py
+ `python3 main.py`
 
 2. В качестве обязательных аргументов необходимо подать на вход изображения:
 
