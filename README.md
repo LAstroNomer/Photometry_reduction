@@ -34,7 +34,7 @@ pip3 install photutils astropy pathlib numpy scipy matplotlib
 или
 
 `python3 main.py first_image.fits N N` --- для монохроматического режима.
- Далее рассматриваем пример многоцветового режима.
+ 
 
 3. Далее посредством ключа `-с` выбирается один из каталогов: _NOMAD, SDSS, PS1_. (По умолчанию NOMAD)
 
