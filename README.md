@@ -61,7 +61,7 @@ pip3 install photutils astropy pathlib numpy scipy matplotlib
  Для локальной оценки фона используются круглые кольца, радиусами 
  
  $$
- r_[in} = k1 \cdot FWHM (pix) \quad r_{out}=k2 \cdot FWHM (pix).
+ r_{in} = k1 \cdot FWHM (pix) \quad r_{out} = k2 \cdot FWHM (pix).
  $$
  
  Они аналогично регулируются ключами `--k1` и `--k2`. (По умолчанию FWHM = 9 pix, k0 = 2; k1 = 2.5; k2 = 3)
