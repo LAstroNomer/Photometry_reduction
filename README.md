@@ -111,21 +111,22 @@ pip3 install photutils astropy pathlib numpy scipy matplotlib
 Пусть у нас есть измеренный профиль для звёзд $f_1(x, y)$. Тогда для другой звезды профиль будет таким же, но домноженный на коэфециент $\alpha$, те:
 
 $$
-f_2(x, y) = \alpha f_1(x, y) (1)
+f_2(x, y) = \alpha f_1(x, y) \qquad (1)
 $$
 
 Поток от звезды пропорционален интегралу по профилю:
 $$
-F \sim \int\limits_{\Omega} f(x, y) dx dy (2.1)
+F \sim \int\limits_{\Omega} f(x, y) dx dy \qquad (2.1)
 $$
 
 или
 
 $$
-F \sim \int\limits_{\Omega} r\,f(r, \phi) dr d\phi (2.2)
+F \sim \int\limits_{\Omega} r\,f(r, \phi) dr d\phi \qquad (2.2)
 $$
 
 Сам поток $F$ состоит из потока внутри апретуры $F^{ap}$ и поправки $\Delta F$, где 
+
 $$
 F^{ap} \sim \int\limits_{0}^{r_{ap}}\int\limits_0^{2\pi} r\,f(r, \phi) dr d\phi \qquad \Delta F \sim \int\limits_{r_{ap}}^{\infinity}\int\limits_0^{2\pi} r\,f(r, \phi) dr d\phi
 $$
