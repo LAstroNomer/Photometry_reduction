@@ -16,7 +16,7 @@
 Ниже приведены используемы python пакеты:
 
 ```
-pip3 install photutils astropy pathlib numpy scipy matplotlib` 
+pip3 install photutils astropy pathlib numpy scipy matplotlib
 ```
 
 ## Пример использования программы:
