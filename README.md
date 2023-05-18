@@ -120,7 +120,11 @@ pip3 install photutils astropy pathlib numpy scipy matplotlib
 
 ![ds9 window without bad stars](doc/doc2.png)
 
-Как видим на изображении ниже удалённые звёзды отсутствуют.
+Теперь окно можно закрывать. Программа продолжит работу. 
+
+Как видим на итоговом изображении ниже удалённые звёзды отсутствуют.
+
+![result aperture images](doc/doc3.png)
 
 
 
