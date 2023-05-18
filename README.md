@@ -118,7 +118,7 @@ pip3 install photutils astropy pathlib numpy scipy matplotlib
 
 Теперь необходимо сохранить регионовский файл. **Region >> Save**. Выбрать _aper.reg_ и выбрать **image**.
 
-![ds9 window without bad stars](doc/doc4.png)
+![ds9 window without bad stars](doc/doc2.png)
 
 Теперь окно можно закрывать. Программа продолжит работу. 
 
