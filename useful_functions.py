@@ -76,7 +76,7 @@ def get_image_center(filelist):
     
     print('DECc = ', DECc_mean)
     print('RAc  = ', RAc_mean)
-    print('radius = %s min' %(max_radius*60))
+    print('radius = %s arcmin' %(max_radius*60))
     return RAc_mean, DECc_mean, radius
 
 #-----------------------------------------------------------------
@@ -96,22 +96,23 @@ def get_stars_coords(df, W, bdr, w, h, catalog):
     return xy, mags, ra, dec
 #-------------------------------------------------------------------
 
-def load_stars_from_Vizier(RAc, DECc, rc, low_mag, up_mag, 
+def load_stars_from_Vizier(RAc, DECc, rc, low_mag, up_mag, filt, 
                           out_file=None, catalog=['NOMAD']):
     # Load stars from NOMAD catalog with astroquery,Vizir
     # low_mag < Vmag < up_mag
-    
+    out_file = 'test.csv'
     Vizier.ROW_LIMIT = -1
     RAc = RAc * u.degree
     DECc = DECc * u.degree
     radius = rc * u.degree
 
     if (catalog[0] == 'NOMAD1') or (catalog[0] == 'NOMAD'):
-        filters={'Vmag': '%s : %s' %(low_mag, up_mag)}  
+        filters={'%smag' %filt: '%s : %s' %(low_mag, up_mag)}  
     elif catalog[0] == 'SDSS': 
-        filters={'gmag': '%s : %s' %(low_mag, up_mag)}  
+        filters={'%smag' %filt: '%s : %s' %(low_mag, up_mag), 'cl': '6'}  
+        #filters={'class': '=6'}  
     elif catalog[0] == 'PS1':
-        filters={'gmag': '(>%s) & (<%s)' %(low_mag, up_mag)}  
+        filters={'%smag' %filt: '(>%s) & (<%s)' %(low_mag, up_mag)}  
 
 
 
@@ -231,3 +232,28 @@ def get_stars_from_GAIA(RAc, DECc, limmag1, limmag2, radius, filename=None):
                             output_file=filename)
     df = pd.read_csv(filename)
     return df
+#---------------------------------------------------------------------------------
+
+def echo(args):
+    dic = args.__dict__
+
+    for key in dic:
+        print('%s: %s' %(key, dic[key]))
+    return
+
+#---------------------------------------------------------------------------------
+def save(cols, header, out_dir):
+
+    out_path = Path(out_dir, 'photometry_result.dat')
+    with open(out_path, 'w') as out:
+        print('#' + ' '.join(header), file=out)
+        n_cols = len(cols)
+        n_rows = len(cols[0])
+
+        for i in range(n_rows):
+            for j in range(n_cols):
+                print('%8.3f' %(np.round(cols[j][i], 3)), end='    ', file=out)
+            print('',file=out)
+    return
+
+
