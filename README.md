@@ -16,7 +16,7 @@
 Ниже приведены используемы python пакеты:
 
 ```
-pip3 install photutils astropy pathlib numpy scipy matplotlib
+pip3 install photutils astropy pathlib numpy scipy matplotlib joblib scikit-learn 
 ```
 
 ## Пример использования программы:
@@ -187,7 +187,7 @@ $$
 1. Монохромный режим
 
 ```
-python3 main.py test_images/sdss_cutout_184.2428_66.5268_g.fits N N -c SDSS -f g -out test_results -lm=14 -um=19 --fwhm=6.5 --bdr=20`
+python3 main.py test_images/sdss_cutout_184.2428_66.5268_g.fits N N -c SDSS -f g -out test_results -lm=14 -um=19 --fwhm=6.5 --bdr=20
 ```
 
 ![ds9 window without bad stars](doc/doc5.png)
