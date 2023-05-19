@@ -206,7 +206,7 @@ def load_ds9_apertures(region): #, xy):
 
 def update_ds9_apertures(region, inds, outdir):
     
-    if region == 'aper_res.reg':
+    if region.name == 'aper_res.reg':
         out_path = Path(outdir, 'aper_res_new.reg')
     else:
         out_path = Path(outdir, 'aper_res.reg')
