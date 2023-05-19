@@ -186,16 +186,21 @@ $$
 
 1. Монохромный режим
 
-`python3 main.py M100/sdss_cutout_184.2428_66.5268_g.fits N N -c SDSS -f g -out desi -lm=14 -um=19 --fwhm=6.5 --bdr=20 
+`python3 main.py M100/sdss_cutout_184.2428_66.5268_g.fits N N -c SDSS -f g -out desi -lm=14 -um=19 --fwhm=6.5 --bdr=20 `
 
 ![ds9 window without bad stars](doc/doc5.png)
 
 2. Трёхцветовой режим
 
-`python3 main.py M100/sdss_cutout_184.2428_66.5268_g.fits M100/sdss_cutout_184.2428_66.5268_r.fits M100/sdss_cutout_184.2428_66.5268_i.fits -c SDSS -f gri --fwhm=6.5  -out test_results -lm=10 -um=19 --bdr=20  
+`python3 main.py M100/sdss_cutout_184.2428_66.5268_g.fits M100/sdss_cutout_184.2428_66.5268_r.fits M100/sdss_cutout_184.2428_66.5268_i.fits -c SDSS -f gri --fwhm=6.5  -out test_results -lm=10 -um=19 --bdr=20  `
 
 ![ds9 window without bad stars](doc/doc9.png)
 
+Истинное уравнение перехода:
+
+$$
+m_{catalog} = m_{instrumental} + 22.5
+$$
 
 
 
