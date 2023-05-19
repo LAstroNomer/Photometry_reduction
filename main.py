@@ -56,6 +56,7 @@ def main(fnames, bdr=0, low_mag=14, up_mag=17, fwhm=9.0, k0=2, k1=2.5, k2=3,
             if app is None:
                 sph.create_ds9_apertures(xy, fwhm, k0, k1, k2)
                 app = 'aper.reg'
+            app = Path(app)
             
             if manual:
                 #sph.grow_curve(data, xs, ys, gal)
