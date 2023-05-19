@@ -186,13 +186,17 @@ $$
 
 1. Монохромный режим
 
-`python3 main.py test_images/sdss_cutout_184.2428_66.5268_g.fits N N -c SDSS -f g -out test_results -lm=14 -um=19 --fwhm=6.5 --bdr=20 `
+```
+python3 main.py test_images/sdss_cutout_184.2428_66.5268_g.fits N N -c SDSS -f g -out test_results -lm=14 -um=19 --fwhm=6.5 --bdr=20`
+```
 
 ![ds9 window without bad stars](doc/doc5.png)
 
 2. Трёхцветовой режим
 
-`python3 main.py test_images/sdss_cutout_184.2428_66.5268_g.fits test_images/sdss_cutout_184.2428_66.5268_r.fits test_images/sdss_cutout_184.2428_66.5268_i.fits -c SDSS -f gri --fwhm=6.5  -out test_results -lm=10 -um=19 --bdr=20  `
+```
+python3 main.py test_images/sdss_cutout_184.2428_66.5268_g.fits test_images/sdss_cutout_184.2428_66.5268_r.fits test_images/sdss_cutout_184.2428_66.5268_i.fits -c SDSS -f gri --fwhm=6.5  -out test_results -lm=10 -um=19 --bdr=20  
+```
 
 ![ds9 window without bad stars](doc/doc9.png)
 
