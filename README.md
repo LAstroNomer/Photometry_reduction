@@ -16,7 +16,7 @@
 Ниже приведены используемы python пакеты:
 
 ```
-pip3 install photutils astropy pathlib numpy scipy matplotlib joblib scikit-learn 
+pip3 install photutils astropy pathlib numpy scipy matplotlib joblib threadpoolctl scikit-learn 
 ```
 
 ## Пример использования программы:
