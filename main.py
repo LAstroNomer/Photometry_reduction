@@ -99,16 +99,22 @@ def main(fnames, bdr=0, low_mag=14, up_mag=17, fwhm=9.0, k0=2, k1=2.5, k2=3,
         mad_fwhm  = sph.mad(Bfwhm[~np.isnan(Bfwhm)])
         print('FWHM:', m_fwhm, '+-', mad_fwhm)
         Binds = np.where(abs(Bfwhm - m_fwhm) <= 3*mad_fwhm)
+        
+
 
         Best = Best[Binds]
         Bmag = Bmag[Binds]
         Bxy   = Bxy[Binds]
         inds = inds[Binds]
 
+        print('Objects extracted: %i' %len(Bmag))
+        if len(Bmag) < 3:
+            print('There are too few points to establish a dependency. Exit....')
+            os._exit(1)
+       
         apertures = apertures[Binds]
         annulus_apertures = annulus_apertures[Binds]
         
-        print('Objects extracted: %i' %len(Bmag))
 
         sph.plot_apers(data, apertures, annulus_apertures, out_dir)
         sph.update_ds9_apertures(region=app, inds=inds, outdir=out_dir)
@@ -135,17 +141,19 @@ def main(fnames, bdr=0, low_mag=14, up_mag=17, fwhm=9.0, k0=2, k1=2.5, k2=3,
 
         print('FWHM B:', Bm_fwhm, '+-', Bmad_fwhm)
 
-        Vm_fwhm = np.median(Vfwhm)
-        Vmad_fwhm  = sph.mad(Vfwhm)
+        Vm_fwhm = np.median(Vfwhm[~np.isnan(Vfwhm)])
+        Vmad_fwhm  = sph.mad(Vfwhm[~np.isnan(Vfwhm)])
         
         print('FWHM V:', Vm_fwhm, '+-', Vmad_fwhm)
 
-        Rm_fwhm = np.median(Rfwhm)
-        Rmad_fwhm  = sph.mad(Rfwhm)
+        Rm_fwhm = np.median(Rfwhm[~np.isnan(Rfwhm)])
+        Rmad_fwhm  = sph.mad(Rfwhm[~np.isnan(Rfwhm)])
 
         print('FWHM R:', Rm_fwhm, '+-', Rmad_fwhm)
 
         Binds = np.where((abs(Bfwhm - Bm_fwhm) <= 3*Bmad_fwhm)*(abs(Vfwhm - Vm_fwhm) <= 3*Vmad_fwhm)*(abs(Rfwhm - Rm_fwhm) <= 3*Rmad_fwhm))
+
+        
 
         #xy   = xy[Binds]
         #xs = [x[0] for x in xy]
@@ -159,6 +167,10 @@ def main(fnames, bdr=0, low_mag=14, up_mag=17, fwhm=9.0, k0=2, k1=2.5, k2=3,
         Best += dm
         print('Delta Bm:', dm)
 
+        print('Objects extracted: %i' %len(Bmag))
+        if len(Bmag) < 3:
+            print('There are too few points to establish a dependency. Exit....')
+            os._exit(1)
 
         Vest = Vest[Binds]
         Vmag = Vmag[Binds]
@@ -177,7 +189,6 @@ def main(fnames, bdr=0, low_mag=14, up_mag=17, fwhm=9.0, k0=2, k1=2.5, k2=3,
         print('Delta Rm:', dm)
 
         
-        print('Objects extracted: %i' %len(Bmag))
         apertures = apertures[Binds]
         annulus_apertures = annulus_apertures[Binds]
 
