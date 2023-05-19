@@ -100,7 +100,7 @@ def load_stars_from_Vizier(RAc, DECc, rc, low_mag, up_mag, filt,
                           out_file=None, catalog=['NOMAD']):
     # Load stars from NOMAD catalog with astroquery,Vizir
     # low_mag < Vmag < up_mag
-    out_file = 'test.csv'
+    #out_file = 'test.csv'
     Vizier.ROW_LIMIT = -1
     RAc = RAc * u.degree
     DECc = DECc * u.degree

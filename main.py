@@ -25,7 +25,7 @@ def main(fnames, bdr=0, low_mag=14, up_mag=17, fwhm=9.0, k0=2, k1=2.5, k2=3,
     if catalog in sets.known_catalogs: 
         print('Getting data from star catalogues. This may take some time...') 
         df = ufoo.load_stars_from_Vizier(RAc, DECc, rc, low_mag=low_mag, up_mag=up_mag, filt=f,
-                          out_file=None, catalog=[catalog])
+                          out_file=Path(out_dir, 'input_catalog.csv'), catalog=[catalog])
     else:        
         print('I dont know such a catalog... Exit.')
         os._exit(1)
@@ -152,6 +152,9 @@ def main(fnames, bdr=0, low_mag=14, up_mag=17, fwhm=9.0, k0=2, k1=2.5, k2=3,
         print('FWHM R:', Rm_fwhm, '+-', Rmad_fwhm)
 
         Binds = np.where((abs(Bfwhm - Bm_fwhm) <= 3*Bmad_fwhm)*(abs(Vfwhm - Vm_fwhm) <= 3*Vmad_fwhm)*(abs(Rfwhm - Rm_fwhm) <= 3*Rmad_fwhm))
+        Bfwhm = Bfwhm[Binds]
+        Vfwhm = Vfwhm[Binds]
+        Rfwhm = Rfwhm[Binds]
 
         
 
@@ -167,10 +170,6 @@ def main(fnames, bdr=0, low_mag=14, up_mag=17, fwhm=9.0, k0=2, k1=2.5, k2=3,
         Best += dm
         print('Delta Bm:', dm)
 
-        print('Objects extracted: %i' %len(Bmag))
-        if len(Bmag) < 3:
-            print('There are too few points to establish a dependency. Exit....')
-            os._exit(1)
 
         Vest = Vest[Binds]
         Vmag = Vmag[Binds]
@@ -189,6 +188,10 @@ def main(fnames, bdr=0, low_mag=14, up_mag=17, fwhm=9.0, k0=2, k1=2.5, k2=3,
         print('Delta Rm:', dm)
 
         
+        print('Objects extracted: %i' %len(Bmag))
+        if len(Bmag) < 3:
+            print('There are too few points to establish a dependency. Exit....')
+            os._exit(1)
         apertures = apertures[Binds]
         annulus_apertures = annulus_apertures[Binds]
 
@@ -203,6 +206,9 @@ def main(fnames, bdr=0, low_mag=14, up_mag=17, fwhm=9.0, k0=2, k1=2.5, k2=3,
             Best += 2.5*np.log10(exptime)
             Vest += 2.5*np.log10(exptime)
             Rest += 2.5*np.log10(exptime)
+        xs = [x[0] for x in np.mean([Bxy, Vxy, Rxy], axis=0)]
+        ys = [x[1] for x in np.mean([Bxy, Vxy, Rxy], axis=0)]
+        ufoo.save([inds, xs, ys,  Best, Bmag, Bfwhm, Vest, Vmag, Vfwhm,  Rest, Rmag, Rfwhm], ['index', 'x_center', 'y_center', 'B_instrumental', 'B_catalog', 'B_FWHM', 'V_instrumental', 'V_catalog', 'V_FWHM', 'R_instrumental', 'R_catalog', 'R_FWHM'], out_dir) 
     
         mps.get_equals(cat_B=Bmag, cat_V=Vmag, cat_R=Rmag, est_B=Best, est_V=Vest, est_R=Rest, fnameB=fnames[0], fnameV=fnames[1], fnameR=fnames[2], filters=filters, out_dir=out_dir, inds0=inds)
     
