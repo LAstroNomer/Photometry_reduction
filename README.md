@@ -178,7 +178,25 @@ $$
 
 Таким образом нам не обязательно знать сам профиль звезды, чтобы оценить поправку за апертуру. Мы просто берем несколько ярких звёзд и для каждой из них определяем $\Delta m$. После чего усредняем.
 
-### Тест фотометрии
-
 ### Тест работы программы
+
+Для проверки работы программы был взят кадр SDSS RA=184.2428 DEC=66.5268 в трёх фильрах  g, r и i.
+
+Параметры запуска:
+
+1. Монохромный режим
+
+'python3 main.py M100/sdss_cutout_184.2428_66.5268_g.fits N N -c SDSS -f g -out desi -lm=14 -um=19 --fwhm=6.5 --bdr=20 
+
+![ds9 window without bad stars](doc/doc5.png)
+
+2. Трёхцветовой режим
+
+'python3 main.py M100/sdss_cutout_184.2428_66.5268_g.fits M100/sdss_cutout_184.2428_66.5268_r.fits M100/sdss_cutout_184.2428_66.5268_i.fits -c SDSS -f gri --fwhm=6.5  -out test_results -lm=10 -um=19 --bdr=20  
+
+![ds9 window without bad stars](doc/doc9.png)
+
+
+
+
 
