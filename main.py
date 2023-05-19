@@ -64,7 +64,6 @@ def main(fnames, bdr=0, low_mag=14, up_mag=17, fwhm=9.0, k0=2, k1=2.5, k2=3,
                 print('Open ds9')
                 sph.call_ds9(fname, app)
                 apertures, annulus_apertures, inds = sph.load_ds9_apertures(app)
-                print(inds)
                 
                 # !!!!
                 xy   = xy[inds]
